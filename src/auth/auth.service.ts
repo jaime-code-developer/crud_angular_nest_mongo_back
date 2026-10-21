@@ -24,10 +24,7 @@ export class AuthService {
   async login(user: any) {
     const payload = { email: user.email, sub: user._id };
     return {
-      access_token: this.jwtService.sign(payload, {
-        secret: this.configService.get<string>('JWT_SECRET'),
-        expiresIn: this.configService.get<string>('JWT_EXPIRES_IN'),
-      }),
+      access_token: this.jwtService.sign(payload), // <-- Limpio, usa la configuración global del módulo
     };
   }
 }

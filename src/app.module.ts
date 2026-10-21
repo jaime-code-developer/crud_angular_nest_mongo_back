@@ -14,7 +14,7 @@ import { UsersModule } from './users/users.module';
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
-        uri: configService.get<string>('MONGODB_URI'),
+        uri: configService.get<string>('MONGO_URI') || 'mongodb://mongodb:27017/nest-crud',
       }),
       inject: [ConfigService],
     }),
